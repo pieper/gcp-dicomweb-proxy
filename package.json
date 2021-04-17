@@ -1,0 +1,14 @@
+{
+	"name": "gcp-proxy-func",
+	"version": "1.0.0",
+	"description": "Run http-proxy-middleware to relay requests",
+	"main": "index.js",
+	"scripts": {
+		"deploy": "gcloud functions deploy proxy --runtime nodejs8 --trigger-http --memory=128 --timeout=60s"
+	},
+	"dependencies": {
+		"google-auth-library": "^7.0.4",
+		"express": "^4.17.1",
+		"http-proxy-middleware": "^0.20.0"
+	}
+}
