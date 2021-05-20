@@ -5,6 +5,7 @@
 const {google} =require('googleapis');
 
 const express = require('express');
+const cors = require('cors');
 const proxyMiddleware = require('http-proxy-middleware');
 
 const port = process.env.PORT || 8080;
@@ -17,6 +18,7 @@ let token = null;
 
 function runApp() {
   app = express();
+  app.use(cors());
   app.all('*', getProxy());
 
   app.listen(port, () => {
