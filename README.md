@@ -8,6 +8,14 @@ Deploy command:
 gcloud functions deploy proxy --runtime nodejs20 --trigger-http --allow-unauthenticated
 ```
 
+After deploying, run the following if you want it to be accessible to all users (you will need `cloudfunctions.functions.setIamPolicy` IAM permission to perform this operation):
+
+```bash
+gcloud functions add-iam-policy-binding prostate_seg_proxy --region=us-central1 --member=allUsers --role=roles/cloudfunctions.invoker
+```
+
+
+
 Conversation that helped fix the code to make it deploy: https://www.perplexity.ai/search/i-am-trying-to-deploy-a-google-BjRoJupjQ2eup440PQOEAQ
 
 Not so helpful conversation with Gemini, which however includes instructions on how to configure AppEngine SA to permit access to GHC DICOM store: https://g.co/gemini/share/46ab5254e2c8
